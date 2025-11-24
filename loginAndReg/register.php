@@ -1,5 +1,3 @@
 <?php
-
 //PHP HERE
-
 ?>
