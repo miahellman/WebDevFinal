@@ -21,10 +21,15 @@ nav ul {
 .logo {
     background-color: #0014ff;
     color: white;
-    padding: 20px 40px;
-    font-size: 35px;
+    padding: 50px 40px;
+    font-size: 70px;
     letter-spacing: 5px;
     font-weight: bold;
+    margin-left: 50px;
+    width: 500px;
+    height: auto;
+    
+
 }
 #introBody {
     display: flex;
