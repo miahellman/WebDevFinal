@@ -26,9 +26,9 @@ nav ul {
     letter-spacing: 5px;
     font-weight: bold;
     margin-left: 50px;
-    width: 500px;
+    width: 30vw;
     height: auto;
-    
+    text-align: center;
 
 }
 #introBody {
