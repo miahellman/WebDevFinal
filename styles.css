@@ -1,1 +1,37 @@
 /* styles here */   
+
+body {
+    font-family: Helvetica, sans-serif;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin-right: 100px;
+}
+.logo {
+    background-color: #0014ff;
+    color: white;
+    padding: 20px 40px;
+    font-size: 35px;
+    letter-spacing: 5px;
+    font-weight: bold;
+}
+#introBody {
+    display: flex;
+    gap: 50px;
+}
+.planets {
+    max-width: 600px;
+    width: 100%;
+    display: block;
+}
