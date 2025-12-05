@@ -119,18 +119,18 @@ footer {
   }
 
   .navbar ul {
-    gap: 15px;
+    gap: 10px;
   }
 
   .content-section h1 {
-    font-size: 38px;
+    font-size: 34px;
   }
 }
 
 @media(max-width: 650px) {
   .navbar {
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
   }
 
   .navbar ul {

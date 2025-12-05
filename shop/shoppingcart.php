@@ -1,7 +1,5 @@
+<?php include('../header.php'); ?>
 <?php
-// shoppingcart.php - Handle shopping cart form submission
-
-// Check if the form was submitted via POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Get form values submitted by the user
@@ -27,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $success = false;
         $message = "Please select at least one item.";
     } else {
-        // Calculate order totals
         $product1Price = 25.00;
         $product2Price = 20.00;
         $product3Price = 8.00;
@@ -46,14 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $shippingCost = ($shipping === 'shipping') ? 10.00 : 0.00;
         $grandTotal = $cartSubtotal + $shippingCost;
         
-        // Get current date and time
         $orderDate = date('Y-m-d H:i:s');
         
-        // Mask credit card number (show only last 4 digits)
         $maskedCreditCard = str_repeat('*', strlen($creditCard) - 4) . substr($creditCard, -4);
         
-        // Format the data to be stored in orders.txt
-        // Using pipe (|) as delimiter for easy parsing
         $orderData = array(
             $orderDate,
             $customerName,
@@ -73,11 +66,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             number_format($shippingCost, 2),
             number_format($grandTotal, 2)
         );
-        
-        // Join the data with pipes and add a newline
+
         $dataLine = implode('|', $orderData) . "\n";
         
-        // Append the data to orders.txt
         $filename = 'orders.txt';
         $writeResult = file_put_contents($filename, $dataLine, FILE_APPEND | LOCK_EX);
         
@@ -91,7 +82,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
 } else {
-    // If accessed directly without POST data
     $success = false;
     $message = "Invalid access method.";
 }
@@ -187,19 +177,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">SPACE NETWORK</div>
-        
-        <nav>
-            <ul>
-                <li><a href="../about.html">ABOUT</a></li>
-                <li><a href="merch.html">MERCH</a></li>
-                <li><a href="../games.html">GAMES</a></li>
-                <li><a href="../contact.html">CONTACT</a></li>
-                <li><a href="../loginAndReg/login.html">LOGIN</a></li>
-            </ul>
-        </nav>
-    </header>
 
     <div class="confirmation-container">
         <h1>Order Confirmation</h1>

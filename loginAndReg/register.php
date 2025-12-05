@@ -26,7 +26,6 @@ try {
     echo "Error creating table: " . $e->getMessage();
 }
 
-
 $user = trim($_POST['user']);
 $password = trim($_POST['password']);
 
@@ -50,7 +49,6 @@ if ($row) {
     exit();
 }
 
-
 //insert new user
 $sqlInsert = "INSERT INTO users (user, password) VALUES (:user, :password)";
 
@@ -59,7 +57,6 @@ try {
     $stmt->bindValue(':user', $user, SQLITE3_TEXT);
     $stmt->bindValue(':password', $password, SQLITE3_TEXT);
     $stmt->execute();
-
 } catch (Exception $e) {
     echo "Error inserting data: " . $e->getMessage();
 }
