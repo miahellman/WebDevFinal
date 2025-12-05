@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MERCH - Space Network</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="merch.css">
+</head>
+<body>
+    <header>
+        <div class="logo">SPACE NETWORK</div>
+        
+        <nav>
+            <ul>
+                <li><a href="../about.html">ABOUT</a></li>
+                <li><a href="merch.html">MERCH</a></li>
+                <li><a href="../games.html">GAMES</a></li>
+                <li><a href="../contact.html">CONTACT</a></li>
+                <li><a href="../loginAndReg/login.html">LOGIN</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>MERCHANDISE</h1>
+        </div>
+
+        <form id="shoppingForm" name="shoppingForm" action="shoppingcart.php" method="post">
+            <div class="main-content">
+                <div class="products-section">
+                    <div class="product-card">
+                        <img src="../images/landscape-placeholder.png" 
+                             alt="Space Network T-Shirt" class="product-image">
+                        <div class="product-info">
+                            <h3>Space Network T-Shirt</h3>
+                            <div class="product-price">$25.00</div>
+                            <div class="quantity-control">
+                                <label for="qty1">Quantity:</label>
+                                <input type="number" id="qty1" name="qty1" min="0" value="0">
+                            </div>
+                            <div class="subtotal-display">Sub-total: $<span id="subtotal1">0.00</span></div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="../images/landscape-placeholder.png" 
+                             alt="Astronaut Cap" class="product-image">
+                        <div class="product-info">
+                            <h3>Astronaut Baseball Cap</h3>
+                            <div class="product-price">$20.00</div>
+                            <div class="quantity-control">
+                                <label for="qty2">Quantity:</label>
+                                <input type="number" id="qty2" name="qty2" min="0" value="0">
+                            </div>
+                            <div class="subtotal-display">Sub-total: $<span id="subtotal2">0.00</span></div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="../images/landscape-placeholder.png" 
+                             alt="Astronaut Ice Cream" class="product-image">
+                        <div class="product-info">
+                            <h3>Astronaut Ice Cream</h3>
+                            <div class="product-price">$8.00</div>
+                            <div class="quantity-control">
+                                <label for="qty3">Quantity:</label>
+                                <input type="number" id="qty3" name="qty3" min="0" value="0">
+                            </div>
+                            <div class="subtotal-display">Sub-total: $<span id="subtotal3">0.00</span></div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="../images/landscape-placeholder.png" 
+                             alt="Space Mug" class="product-image">
+                        <div class="product-info">
+                            <h3>Solar System Coffee Mug</h3>
+                            <div class="product-price">$15.00</div>
+                            <div class="quantity-control">
+                                <label for="qty4">Quantity:</label>
+                                <input type="number" id="qty4" name="qty4" min="0" value="0">
+                            </div>
+                            <div class="subtotal-display">Sub-total: $<span id="subtotal4">0.00</span></div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="../images/landscape-placeholder.png" 
+                             alt="Space Poster" class="product-image">
+                        <div class="product-info">
+                            <h3>Galaxy Poster Set</h3>
+                            <div class="product-price">$30.00</div>
+                            <div class="quantity-control">
+                                <label for="qty5">Quantity:</label>
+                                <input type="number" id="qty5" name="qty5" min="0" value="0">
+                            </div>
+                            <div class="subtotal-display">Sub-total: $<span id="subtotal5">0.00</span></div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="../images/landscape-placeholder.png" 
+                             alt="Astronaut Helmet Model" class="product-image">
+                        <div class="product-info">
+                            <h3>Astronaut Helmet Replica</h3>
+                            <div class="product-price">$250.00</div>
+                            <div class="quantity-control">
+                                <label for="qty6">Quantity:</label>
+                                <input type="number" id="qty6" name="qty6" min="0" value="0">
+                            </div>
+                            <div class="subtotal-display">Sub-total: $<span id="subtotal6">0.00</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="customer-section">
+                    <h2>Shipping Information</h2>
+                    <div class="form-group">
+                        <label for="customerName">Name:</label>
+                        <input type="text" id="customerName" name="customerName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="zipCode">ZIP Code:</label>
+                        <input type="text" id="zipCode" name="zipCode" pattern="[0-9]{5}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="creditCard">Credit Card:</label>
+                        <input type="text" id="creditCard" name="creditCard" maxlength="16" required>
+                    </div>
+
+                    <div class="shipping-options">
+                        <label><strong>Shipping Method:</strong></label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="pickup" name="shipping" value="pickup" checked>
+                                <label for="pickup">Store Pickup (Free)</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="shipping" name="shipping" value="shipping">
+                                <label for="shipping">Standard Shipping ($15.00)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="total-section">
+                        <div class="total-line">
+                            <span>Subtotal:</span>
+                            <span>$<span id="cartSubtotal">0.00</span></span>
+                        </div>
+                        <div class="total-line">
+                            <span>Shipping:</span>
+                            <span>$<span id="shippingCost">0.00</span></span>
+                        </div>
+                        <div class="total-line grand-total">
+                            <span>Grand Total:</span>
+                            <span>$<span id="grandTotal">0.00</span></span>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <input type="submit" class="btn btn-checkout" value="CHECKOUT">
+                        <input type="reset" class="btn btn-reset" value="RESET">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="merch.js"></script>
+</body>
+</html>
