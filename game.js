@@ -54,12 +54,14 @@ function changePlanet() {
                 locked = true;
             }
             if (i == starPos) {
+                starSound.currentTime = 0;
                 starSound.play();
                 ship.src = "gameImages/star.webp";
                 finalScore++;
                 
             }
             else {
+                asteroidSound.currentTime = 0;
                 asteroidSound.play();
                 ship.src = "gameImages/asteroid.png";
             }
