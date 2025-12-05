@@ -1,0 +1,70 @@
+.login-wrapper {
+  width: 100%;
+  max-width: 450px;
+  margin: 80px auto;
+  text-align: center;
+}
+
+.login-wrapper h2 {
+  font-size: 40px;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-size: 18px;
+}
+
+.login-form label {
+  text-align: left;
+  font-weight: bold;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 6px;
+  font-size: 18px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.button-row input[type="submit"],
+.button-row input[type="reset"] {
+  padding: 10px 20px;
+  border: none;
+  background: #0300BF;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.button-row input:hover {
+  opacity: 0.85;
+}
+
+.register-message {
+color: grey;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.register-message a {
+  color: #0300BF;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.register-message a:hover {
+  text-decoration: underline;
+}
+

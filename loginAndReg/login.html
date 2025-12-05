@@ -1,19 +1,50 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LOGIN</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="login.css">
 </head>
 <body>
 
-<h1> login </h1>
+  <header class="navbar">
+    <div class="logo">SPACE NETWORK</div>
+    <nav>
+      <ul>
+        <li><a href="../about.html">ABOUT</a></li>
+        <li><a href="../shop/merch.html">MERCH</a></li>
+        <li><a href="../games.html">GAMES</a></li>
+        <li><a href="../contact.html">CONTACT</a></li>
+        <li><a href="../loginAndReg/login.html">LOGIN</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<form action="login.php" method="post">
+<section class="login-wrapper">
+  <h2>LOGIN</h2>
 
-username: <input type="text" name="user"><br>
-password: <input type="password" name="password"><br>
-<input type="submit" value=Login>
-<input type="reset">
-</form>
+  <form action="login.php" method="post" class="login-form">
+
+    <label>USERNAME</label>
+    <input type="text" name="user" required>
+
+    <label>PASSWORD</label>
+    <input type="password" name="password" required>
+
+    <div class="button-row">
+      <input type="submit" value="LOGIN">
+      <input type="reset" value="RESET">
+    </div>
+
+  </form>
+
+  <div class="register-message">
+    don't have an account?
+    <a href="register.html">click here!</a>
+  </div>
+</section>
 
 </body>
 </html>
