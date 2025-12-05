@@ -1,15 +1,13 @@
 <?php
-// submit_contact.php - Handle contact form submission
+include "head.php";
 
-// Check if the form was submitted via POST
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-    // Get form values
     $name = isset($_POST['name']) ? htmlspecialchars(trim($_POST['name'])) : '';
     $email = isset($_POST['email']) ? htmlspecialchars(trim($_POST['email'])) : '';
     $message = isset($_POST['message']) ? htmlspecialchars(trim($_POST['message'])) : '';
     
-    // Basic validation
     if (empty($name) || empty($email) || empty($message)) {
         $success = false;
         $errorMessage = "Please fill in all required fields.";
@@ -18,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
 } else {
-    // If accessed directly without POST data
     $success = false;
     $errorMessage = "Invalid access method.";
 }
@@ -96,26 +93,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">SPACE NETWORK</div>
-        
-        <nav>
-            <ul>
-                <li><a href="about.html">ABOUT</a></li>
-                <li><a href="shop/merch.html">MERCH</a></li>
-                <li><a href="games.html">GAMES</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
-                <li><a href="loginAndReg/login.html">LOGIN</a></li>
-            </ul>
-        </nav>
-    </header>
-
     <div class="message-container">
         <?php if (isset($success) && $success): ?>
             <h1>Thank You for Reaching Out!</h1>
             <p>
                 We've received your message and appreciate you taking the time to contact us. 
-                Our team will review your inquiry and get back to you as soon as possible.
+                Our team will review your inquiry and get back to you as soon as possible!
             </p>
             
             <div class="submission-details">
@@ -128,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
        <?php else: ?>
             <div class="error-icon">✗</div>
-            <h1>Oops! Something Went Wrong</h1>
+            <h1>Oops! Sorry But Something Went Wrong</h1>
             <p><?php echo isset($errorMessage) ? $errorMessage : 'An error occurred.'; ?></p>
         <?php endif; ?>
         
