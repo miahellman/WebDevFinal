@@ -1,42 +1,140 @@
-/* styles here */   
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@font-face {
+  font-family: 'OmniMasthead';
+  src: url('fonts/OmniMasthead.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 body {
-    font-family: Helvetica, sans-serif;
-    margin: 40px auto;
-    padding: 0 20px;
+  background: white;
+  color: black;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
+.navbar {
+  padding: 18px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    margin-right: 100px;
-}
+
 .logo {
-    background-color: #0014ff;
-    color: white;
-    padding: 50px 40px;
-    font-size: 70px;
-    letter-spacing: 5px;
-    font-weight: bold;
-    margin-left: 50px;
-    width: 30vw;
-    height: auto;
-    text-align: center;
+font-family: 'OmniMasthead', sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+  background: #0300BF;
+  padding: 8px 20px;
+  letter-spacing: 3px;
+}
 
+
+.navbar ul {
+  display: flex;
+  gap: 40px;
+  list-style: none;
 }
-#introBody {
-    display: flex;
-    gap: 50px;
+
+.navbar ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
 }
-.planets {
-    max-width: 600px;
+
+.navbar ul li a:hover {
+  text-decoration: underline;
+}
+
+.main-container {
+  display: flex;
+  padding: 5%;
+  gap: 5%;
+  flex-wrap: wrap;
+}
+
+.image-section {
+  flex: 1 1 450px;
+}
+
+.image-section img {
+  width: 100%;
+  border-radius: 2px;
+}
+
+.content-section {
+  flex: 1 1 450px;
+}
+
+.content-section h1 {
+  font-size: 46px;
+  margin-bottom: 20px;
+}
+
+.content-section p {
+  font-size: 20px;
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.cta-btn {
+  background: #0300BF;
+  color: white;
+  border: none;
+  padding: 14px 35px;
+  font-size: 22px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cta-btn:hover {
+  opacity: 0.85;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+@media(max-width: 900px) {
+  .logo {
+    font-size: 30px;
+  }
+
+  .navbar ul {
+    gap: 15px;
+  }
+
+  .content-section h1 {
+    font-size: 38px;
+  }
+}
+
+@media(max-width: 650px) {
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .navbar ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cta-btn {
     width: 100%;
-    display: block;
+    text-align: center;
+  }
 }
