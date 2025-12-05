@@ -6,17 +6,14 @@ try {
     $db = new SQLite3($path . '/users.db');
 } 
 catch (Exception $e) {
-    echo "<p style='color:red;'>Error connecting to the database: " . $e->getMessage() . "</p>";
-    exit();
+    $errorMsg = "Error connecting to the database: " . $e->getMessage();
 }
 
 $user = trim($_POST['user'] ?? '');
 $password = trim($_POST['password'] ?? '');
 
 if ($user === "" || $password === "") {
-    echo "<p style='color:red;'>Please fill out all fields.</p>";
-    echo "<a href='login.html'>Back</a>";
-    exit();
+    $errorMsg = "PLEASE FILL OUT ALL FIELDS!";
 }
 
 $sqlSelect2 = "SELECT id, user, password FROM users WHERE user = :user AND password = :password";
@@ -28,7 +25,7 @@ try {
     $results2 = $stmt->execute();
 
     if ($results2 === false) {
-        echo "<p style='color:red;'>Error querying data: " . $db->lastErrorMsg() . "</p>";
+        $errorMsg = "Error querying data: " . $db->lastErrorMsg();
     } else {
         $row = $results2->fetchArray(SQLITE3_ASSOC);
 
@@ -37,15 +34,50 @@ try {
             header("Location: welcome.php");
             exit();
         } else {
-            echo "<h2 style='color:red;'>Login Failed</h2>";
-            echo "<p style='color:red;'>Incorrect username or password.</p>";
-            echo "<a href='login.html'>Try again</a>";
+            $errorMsg = "incorrect username or password!";
         }
     }
 } 
 catch (Exception $e) {
-    echo "<p style='color:red;'>Error querying data: " . $e->getMessage() . "</p>";
+    $errorMsg = "Error querying data: " . $e->getMessage();
 }
 
 $db->close();
+
 ?>
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Failed</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .error-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 70vh;
+    }
+    .content-section {
+        text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<?php include('header.php'); ?>
+
+<div class="error-container">
+    <div class="main-container">
+        <div class="content-section">
+            <h2>LOGIN FAILED</h2>
+            <p class="italic"><?php echo htmlspecialchars($errorMsg); ?></p>
+            <a href="login.html" class="cta-btn" style="text-decoration:none;">try again?</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
