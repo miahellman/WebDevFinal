@@ -1,6 +1,26 @@
 <?php
 include "head.php";
 
+//messages database
+try {
+    $path = "/home/jsl10027/databases";
+    $db = new SQLite3($path . '/messages.db');
+
+    $createTableQuery = "
+        CREATE TABLE IF NOT EXISTS messages (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            email TEXT NOT NULL,
+            message TEXT NOT NULL,
+            submitted_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    ";
+    $db->exec($createTableQuery);
+
+} catch (Exception $e) {
+    $success = false;
+    $errorMessage = "Database error: " . $e->getMessage();
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     

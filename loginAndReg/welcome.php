@@ -26,7 +26,7 @@ $user = $_SESSION['user'];
         <h1>WELCOME, <?php echo htmlspecialchars($user); ?>!</h1>
         <p class="italic">Welcome back! Explore the site and see what's new.</p>
         <section class="about">
-            <p>THIS IS A WEBSITE ABOUT SPACE AND STUFF</p>
+            <p>Check our store page to see any new merch or apparel you might be interested in! We appreciate the support. Or, play a game on our games page! Both pages can be accessed from the header.</p>
         </section>
     </div>
     <div class="image-section">
