@@ -13,13 +13,29 @@ let locked = false;
 let starSound = new Audio("sounds/success.mp3");
 let asteroidSound = new Audio("sounds/lose.mp3");
 let currentPlanet = -1;
-let finalScore = 0;
+let finalScore;
+let shootingStar = false;
+
+if (localStorage.getItem("finalScore") != null) {
+    finalScore = Number(localStorage.getItem("finalScore"));
+}
+else {
+    finalScore = 0;
+}
 
 let title = document.getElementById("top");
 let bottom = document.getElementById("bottom");
 let planetImg = document.getElementById("planetImage");
 let ships = document.getElementById("spaceships");
 
+function reset() {
+    button.innerHTML = "Next";
+    currentPlanet = -1;
+    title.innerHTML = "Welcome Back to Our Outer Space Tour!";
+    bottom.innerHTML = "Travel from planet to planet and find the hidden star. Each round there will be 5 spaceships. Under one, is the star... or the shooting star! Find the correct ship and get a point. Score carries over between rounds. ";
+    planetImg.style.display = "none";
+    ships.innerHTML = "";
+}
 function changePlanet() {
     currentPlanet++;
 
@@ -27,20 +43,39 @@ function changePlanet() {
         title.innerHTML = "Tour Complete!";
         title.innerHTML += "\nYou visited all planets!";
         bottom.innerHTML = "Final score is: " + finalScore;
+        button.innerHTML = "Restart";
         planetImg.style.display = "none";
         ships.innerHTML = "";
-        button.style.display = "none";
+        currentPlanet = -1;
+
         return;
     }
 
     title.innerHTML = planets[currentPlanet].name;
     planetImg.src = planets[currentPlanet].image;
     planetImg.style.display = "block";
-    bottom.innerHTML = "Find the star under one of the ships!";
+    let starPos = parseInt(Math.random() * 5);
 
+    if (shootingStar) {
+        bottom.innerHTML = "Find the star... or a shooting star!!!"
+    }
+    else {
+        bottom.innerHTML = "Find the star under one of the ships!";
+    }
+    
+    let shootingStarIndex = -1;
+
+    if (shootingStar) {
+        shootingStarIndex = parseInt(Math.random() * 5);
+
+        if (shootingStarIndex === starPos) {
+            shootingStarIndex = (starPos + 1) % 5;
+        }
+        shootingStar = false;
+    }
     ships.innerHTML = "";
 
-    let starPos = parseInt(Math.random() * 5);
+    
 
     for (let i = 0; i < 5; i++) {
         let ship = document.createElement("img");
@@ -53,11 +88,21 @@ function changePlanet() {
             else {
                 locked = true;
             }
-            if (i == starPos) {
+
+            if (shootingStarIndex != -1 && i === shootingStarIndex) {
                 starSound.currentTime = 0;
+                starSound.play();
+                ship.src = "gameImages/shootingstar.png";
+                finalScore = finalScore + 3;
+                localStorage.setItem("finalScore", finalScore);
+            }
+            else if (i == starPos) {
+                starSound.currentTime = 0;
+                shootingStar = true;
                 starSound.play();
                 ship.src = "gameImages/star.webp";
                 finalScore++;
+                localStorage.setItem("finalScore", finalScore);
                 
             }
             else {
@@ -71,9 +116,14 @@ function changePlanet() {
 
     }
 
-   
-
 }
-button.addEventListener("click", changePlanet);
+button.addEventListener("click", function() {
+    if (button.innerHTML == "Restart") {
+        reset();
+    }
+    else {
+        changePlanet();
+    }
+});
 
 

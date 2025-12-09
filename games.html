@@ -69,6 +69,46 @@
                 background: rgba(0,0,0, 0.45);
             }
 
+            @media (max-width: 900px) {
+                .gameContainer {
+                    width: 95%;
+                    margin: 20px auto;
+                    padding: 20px;
+                    height: 700px;
+                }
+                #planetandship {
+                    gap: 80px;
+                }
+                #top {
+                    font-size: 2.3rem;
+                    text-align: center;
+
+                }
+                #bottom {
+                    font-size: 1.1rem;
+                    text-align: center;
+                }
+            }
+            @media (max-width: 600px) {
+                #planetandship {
+                    flex-direction: column;
+                    gap: 20px;
+                    text-align: center;
+                }
+                #planetImage {
+                    width: 60%;
+                    max-width: 250px;
+                    margin: 0;
+                }
+                #shipImg {
+                    width: 30%;
+                }
+                button {
+                    font-size: 1rem;
+                    padding: 10px;
+                    margin-top: 10px;
+                }
+            }
             
         </style>
 </head>
@@ -94,8 +134,10 @@
 
             <p id="bottom"> 
                 Travel from planet to planet and find the hidden star. 
-                Each round there will be 5 spaceships. Under one, is the star.
-                Find the correct ship and get a point. 
+                Each planet has 5 spaceships orbiting around it. Under one, is the star.
+                Select the correct ship and win a point. Finding the star is 1 point,
+                and finding the shooting star is 3 points (appears only the round 
+                after finding a star)! Points carry over when game restarts. 
             </p>
             <div id="planetandship">
                 <img id="planetImage" src="" style="width: 200px; display:none;">
