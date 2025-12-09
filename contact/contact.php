@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message Sent - Space Network</title>
+    <title>THANK YOU!</title>
     <link rel="stylesheet" href="../styles.css">
     <style>
         .message-container {
@@ -135,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p><?php echo isset($errorMessage) ? $errorMessage : 'An error occurred.'; ?></p>
         <?php endif; ?>
         
-        <a href="contact.html" class="back-button">Back to Contact</a>
+        <a href="contact.html" class="back-button">BACK</a>
     </div>
 </body>
 </html>
