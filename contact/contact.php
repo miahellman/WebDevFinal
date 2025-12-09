@@ -1,7 +1,6 @@
 <?php
 include "head.php";
 
-//messages database
 try {
     $path = "/home/jsl10027/databases";
     $db = new SQLite3($path . '/messages.db');
@@ -33,6 +32,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errorMessage = "Please fill in all required fields.";
     } else {
         $success = true;
+
+        if (isset($db) && $success) {
+            $stmt = $db->prepare("INSERT INTO messages (name, email, message) VALUES (:name, :email, :message)");
+            $stmt->bindValue(':name', $name, SQLITE3_TEXT);
+            $stmt->bindValue(':email', $email, SQLITE3_TEXT);
+            $stmt->bindValue(':message', $message, SQLITE3_TEXT);
+            $stmt->execute();
+        }
     }
     
 } else {
@@ -46,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THANK YOU!</title>
+    <title>MESSAGE SENT</title>
     <link rel="stylesheet" href="../styles.css">
     <style>
         .message-container {
@@ -115,14 +122,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="message-container">
         <?php if (isset($success) && $success): ?>
-            <h1>Thank You for Reaching Out!</h1>
+            <h1>Thank You!!</h1>
             <p>
                 We've received your message and appreciate you taking the time to contact us. 
                 Our team will review your inquiry and get back to you as soon as possible!
             </p>
             
             <div class="submission-details">
-                <p><strong>Your Submission:</strong></p>
+                <p><strong>Your message:</strong></p>
                 <p><strong>Name:</strong> <?php echo $name; ?></p>
                 <p><strong>Email:</strong> <?php echo $email; ?></p>
                 <p><strong>Message:</strong></p>
