@@ -1,4 +1,6 @@
 let button = document.getElementById("nextButton");
+
+// Declare array with all the planet names and their corresponding image links.
 let planets = [
     {name: "Mercury", image: "gameImages/mercury.png"}, 
     {name: "Venus", image: "gameImages/venus.png"}, 
@@ -10,12 +12,21 @@ let planets = [
     {name: "Neptune", image: "gameImages/neptune.png"}, ];
 
 let locked = false;
+
+// Add audio/sound effects
 let starSound = new Audio("sounds/success.mp3");
 let asteroidSound = new Audio("sounds/lose.mp3");
 let currentPlanet = -1;
 let finalScore;
 let shootingStar = false;
+let timeLeft = 30;
+let timer = null;
 
+// Set up the timer 
+let timerShow = document.getElementById("timer");
+timerShow.innerHTML = "";
+
+// Load saved score from local storage. 
 if (localStorage.getItem("finalScore") != null) {
     finalScore = Number(localStorage.getItem("finalScore"));
 }
@@ -28,6 +39,24 @@ let bottom = document.getElementById("bottom");
 let planetImg = document.getElementById("planetImage");
 let ships = document.getElementById("spaceships");
 
+function startTime() {
+    clearInterval(timer);
+    timeLeft = 30;
+    timerShow.innerHTML = `Time left: ${timeLeft}s`;
+
+    timer = setInterval(() => {
+        timeLeft--;
+        timerShow.innerHTML = `Time left: ${timeLeft}s`;
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            locked = true;
+            bottom.innerHTML = "Time's up!  You missed the chance to find the star!";
+            button.disabled = false;
+        }
+    }, 1000)
+}
+
+// Reset game when the user starts over. 
 function reset() {
     button.innerHTML = "Next";
     currentPlanet = -1;
@@ -36,9 +65,13 @@ function reset() {
     planetImg.style.display = "none";
     ships.innerHTML = "";
 }
+
+// Rotate between planets. 
 function changePlanet() {
+    startTime(); 
     currentPlanet++;
 
+    // Display an end screen when the user rotates through all the planets
     if (currentPlanet >= planets.length) {
         title.innerHTML = "Tour Complete!";
         title.innerHTML += "\nYou visited all planets!";
@@ -47,6 +80,8 @@ function changePlanet() {
         planetImg.style.display = "none";
         ships.innerHTML = "";
         currentPlanet = -1;
+        clearInterval(timer);
+        timerShow.innerHTML = "";
 
         return;
     }
@@ -117,6 +152,7 @@ function changePlanet() {
     }
 
 }
+
 button.addEventListener("click", function() {
     if (button.innerHTML == "Restart") {
         reset();
