@@ -1,4 +1,5 @@
 <?php
+//includes header and also open database
 include "head.php";
 
 try {
@@ -21,6 +22,7 @@ try {
     $errorMessage = "Database error: " . $e->getMessage();
 }
 
+//process form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $name = isset($_POST['name']) ? htmlspecialchars(trim($_POST['name'])) : '';
@@ -120,6 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
+    <!--create message for user-->
     <div class="message-container">
         <?php if (isset($success) && $success): ?>
             <h1>Thank You!!</h1>
@@ -128,6 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 Our team will review your inquiry and get back to you as soon as possible!
             </p>
             
+            <!--"receipt" of submission-->
             <div class="submission-details">
                 <p><strong>Your message:</strong></p>
                 <p><strong>Name:</strong> <?php echo $name; ?></p>

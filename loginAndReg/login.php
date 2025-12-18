@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+//connect to database
 try {
     $path = "/home/jsl10027/databases";
     $db = new SQLite3($path . '/users.db');
@@ -16,6 +17,7 @@ if ($user === "" || $password === "") {
     $errorMsg = "PLEASE FILL OUT ALL FIELDS!";
 }
 
+//check credentials in database
 $sqlSelect2 = "SELECT id, user, password FROM users WHERE user = :user AND password = :password";
 $stmt = $db->prepare($sqlSelect2);
 $stmt->bindValue(':user', $user, SQLITE3_TEXT);
